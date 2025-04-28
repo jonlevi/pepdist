@@ -1,0 +1,33 @@
+shortname,fullname,iedbname,speciesid,proteomeid,type,comment
+Human,Homo sapiens,Homo sapiens,9606,UP000005640,vertebrate,
+Mouse,Mus Musculus,Mus Musculus,10090,UP000000589,vertebrate,
+Chicken,Gallus gallus,Gallus gallus,9031,UP000000539,vertebrate,
+Zebrafish,Danio rerio,Danrio rerio,7955,UP000000437,vertebrate
+Yeast,Saccharomyces cerevisiae,,,UP000002311,fungus,
+Cockroach,Blattella germanica,Blattella germanica,6973,UP000245037,invertebrate,
+Wheat,Triticum aestivum,Triticum aestivum,4565,UP000019116,plant,
+Soybean,Glycine max,Glycine max,3847,UP000008827,plant,
+Vaccinia,Vaccinia virus,Vaccinia virus,,UP000000344,virus,
+InfluenzaB,Influenza B,Influenza B,,UP000127412,virus,
+InfluenzaA,Influenza A,Influenza A virus,,UP000116233,virus,A/Mexico City/INER13/2009(H1N1))
+CMV,Cytomegalovirus,Human betaherpesvirus 5,,UP000008991,virus,
+HCV,Hepacivirus C,Hepacivirus C,,UP000000518,virus,
+HBV,Hepatitis B virus,Hepatitis B virus,,UP000008591,virus,genotype C subtype ayr (isolate Human/Japan/Okamoto/-)
+HSV1,Herpex simplex virus 1,Human alphaherpesvirus 1,,UP000106517,virus,strain RH2
+DENV,Dengue virus,Dengue virus,,UP000002500,virus,
+HIV,Human immunodeficiency virus,Human immunodeficiency virus,,UP000002241,virus,
+EBV,Epstein-Barr virus,Human gammaherpesvirus 4,,UP000153037,virus,
+Ebola,Ebolavirus,Ebolavirus,,UP000007209,virus,Zaire ebolavirus (strain Mayinga-76)
+Ecoli,Escherichia coli,Escherichia coli,,UP000000558,bacterium,Escherichia coli O157:H7
+Tuberculosis,Mycobacterium tuberculosis,Mycobacterium tuberculosis,,UP000001584,bacterium,
+Listeria,Listeria monocytogenes,Listeria monocytogenes,,UP000000817,bacterium,
+Burkholderia,Burkholderia pseudomallei,Burkholderia pseudomallei,,UP000000605,bacterium,
+Meningococcus,Neisseria meningitidis,Neisseria meningitidis,,UP000000425,bacterium,
+StrepA,Streptococcus pyogenes,Streptococcus pyogenes,,UP000000750,bacterium,
+Hpylori,Helicobacter pylori,Helicobacter pylori,,UP000000429,bacterium,causing chronic gastritis
+Lyme,Borreliella burgdorferi,Borreliella burgdorferi,,UP000001807,bacterium,
+Tetanus,Clostridium tetani,Clostridium tetani,,UP000001412,bacterium,
+Leprosy,Mycobacterium leprae,Mycobacterium leprae,,UP000000806,bacterium,
+Malaria,Plasmodium falciparum,Plasmodium falciparum,36329,UP000001450,parasite,
+Chagas,Trypanosoma cruzi,Trypanosoma cruzi,353153,UP000002296,parasite,
+OnchocercaVolvulus,Onchocerca volvulus,Onchocerca volvulus,6282,UP000024404,parasite,causes river blindness
