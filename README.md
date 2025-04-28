@@ -1,2 +1,2 @@
 # pepdist
-Compute distance distributions of short peptides against reference sets
+Compute distance distributions of short, linear peptides against reference sets
