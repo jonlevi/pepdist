@@ -2,7 +2,7 @@ import pyrepseq as prs
 import json
 import os
 import numpy as np
-from utils import datadir
+from utils import datadir, kmers_to_matrix
 
 import multiprocessing
 
@@ -169,28 +169,44 @@ X  0 -1 -1 -1 -2 -1 -1 -1 -1 -1 -1 -1 -1 -1 -2  0  0 -2 -1 -1 -1 -1 -1 -4
                               for j, aaB in enumerate(self.amino_acids)}
 
 
-def compute_nearest_hamming(s_reference_maxdist):
-    s, reference, maxdist = s_reference_maxdist
-    return (s, prs.nndist_hamming(s, reference, maxdist=maxdist))
-
-
-def nearest_hamming_parallel(seqs, reference, maxdist=4):
-    args = [(s, reference, maxdist) for s in seqs]
-    with multiprocessing.Pool(processes=35) as pool:
-        results = pool.map(compute_nearest_hamming, args)
-    return dict(results)
 
 epidist = EpitopeDistance(model_name='all_tcr_all_combos_model')
 
 def cross_reactivity_distance(seqA, seqB):
     return epidist.epitope_dist(seqA,seqB)
 
-def compute_nearest_cross_reactivity(s_reference):
-    s, reference = s_reference
-    return (s, min(cross_reactivity_distance(s,r) for r in reference))
+def get_hamming_distance_from_set(peptide, reference_set, aggregator=min):
+    distances = [sum(c1 != c2 for c1, c2 in zip(peptide, s2)) for s2 in reference_set]
+    return aggregator(distances)
 
-def nearest_cross_reactivity_distance_parallel(seqs, reference):
-    args = [(s, reference) for s in seqs]
-    with multiprocessing.Pool(processes=35) as pool:
-        results = pool.map(compute_nearest_cross_reactivity, args)
-    return dict(results)
+def get_hamming_distance_from_set_alt(peptide, ref_matrix, aggregator=np.min):
+    peptide_matrix = kmers_to_matrix([peptide])[0]
+    distances = np.sum(ref_matrix != peptide_matrix, axis=1)
+    return aggregator(distances)
+
+def get_cross_reactivity_distance_from_set(peptide, reference_set, aggregator=min):
+    distances = [cross_reactivity_distance(peptide,s2) for s2 in reference_set]
+    return aggregator(distances)
+
+# def compute_nearest_hamming(s_reference_maxdist):
+#     s, reference, maxdist = s_reference_maxdist
+#     return (s, prs.nndist_hamming(s, reference, maxdist=maxdist))
+
+
+# def nearest_hamming_parallel(seqs, reference, maxdist=4, aggregator=min):
+#     args = [(s, reference, maxdist) for s in seqs]
+#     with multiprocessing.Pool(processes=multiprocessing.cpu_count()) as pool:
+#         results = pool.map(compute_nearest_hamming, args)
+#     return dict(results)
+
+
+
+# def compute_nearest_cross_reactivity(s_reference):
+#     s, reference = s_reference
+#     return (s, min(cross_reactivity_distance(s,r) for r in reference))
+
+# def nearest_cross_reactivity_distance_parallel(seqs, reference, aggregator=min):
+#     args = [(s, reference) for s in seqs]
+#     with multiprocessing.Pool(processes=multiprocessing.cpu_count()) as pool:
+#         results = pool.map(compute_nearest_cross_reactivity, args)
+#     return dict(results)
